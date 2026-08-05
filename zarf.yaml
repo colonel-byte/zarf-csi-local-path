@@ -4,7 +4,7 @@ kind: ZarfPackageConfig
 metadata:
   name: csi-local-path-provider
   # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-  version: v0.0.36
+  version: 0.0.37
   source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
   annotations:
     org.opencontainers.image.source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
@@ -12,7 +12,7 @@ metadata:
 x-artifacts:
   chart:
     # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
-    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.36
+    - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.37
 components:
   - name: local-path-images
     only:
