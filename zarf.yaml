@@ -36,8 +36,8 @@ components:
       flavor: upstream
     images:
       - docker.io/library/busybox:1.38.0
-      - docker.io/rancher/local-path-provisioner:v0.0.36
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.36
+      - docker.io/rancher/local-path-provisioner:v0.0.37
+      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.37
   - name: local-path-chart
     only:
       flavor: upstream
