@@ -4,4 +4,4 @@ image:
 helperImage:
   # renovate: datasource=docker
   repository: reg.mini.dev/busybox
-  tag: 1.37.0
+  tag: v1.38.0
