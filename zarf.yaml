@@ -1,33 +1,39 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/zarf-dev/zarf/main/zarf.schema.json
+apiVersion: zarf.dev/v1beta1
 kind: ZarfPackageConfig
 metadata:
   name: csi-local-path-provider
   # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
   version: 0.0.37
-  source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
   annotations:
     org.opencontainers.image.source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
     org.opencontainers.image.description: Zarf package for deploying local-path-provider
+    source: https://github.com/colonel-byte/zarf-pkg-local-path-provider
 x-artifacts:
   chart:
     # renovate: datasource=docker depName=ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner
     - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.37
 components:
   - name: local-path-images
-    only:
+    optional: true
+    selector:
       flavor: upstream
     images:
-      - docker.io/library/busybox:1.38.0
-      - docker.io/rancher/local-path-provisioner:v0.0.37
-      - ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.37
+      - name: docker.io/library/busybox:1.38.0
+        id: busybox
+      - name: docker.io/rancher/local-path-provisioner:v0.0.37
+        id: provisioner
+      - name: ghcr.io/rancher/local-path-provisioner/charts/local-path-provisioner:0.0.37
+        id: charts
   - name: local-path-chart
-    only:
+    optional: true
+    selector:
       flavor: upstream
     import:
-      path: common
-      name: local-path-provider-chart
+      local:
+        - path: common/zarf.yaml
     charts:
       - name: local-path-provider
         valuesFiles:
-          - values/image-upstream.yml
+          - path: values/image-upstream.yml
