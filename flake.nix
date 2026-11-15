@@ -57,10 +57,7 @@
               package = pkgs.jsonfmt;
             };
             programs.keep-sorted.enable = true;
-            programs.nixfmt = {
-              enable = true;
-              package = pkgs.nixfmt-rfc-style;
-            };
+            programs.nixfmt.enable = true;
             projectRootFile = "flake.nix";
             settings.formatter = {
               # keep-sorted start block=yes
@@ -93,9 +90,6 @@
               check-executables-have-shebangs.enable = true;
               check-shebang-scripts-are-executable.enable = true;
               end-of-file-fixer.enable = true;
-              nixfmt-rfc-style.enable = true;
-              # no-commit-to-branch.enable = true;
-              # no-commit-to-branch.settings.branch = [ "main" ];
               trim-trailing-whitespace.enable = true;
               # keep-sorted end
             };
